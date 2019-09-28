@@ -1,5 +1,8 @@
 var http = require("http");
 var path = require("path");
+var mysql = require("mysql");
+var session = require("express-session");
+var bodyParser = require("body-parser");
 
 var async = require("async");
 var socketio = require("socket.io");
@@ -11,14 +14,8 @@ var io = socketio.listen(server);
 
 app.use(express.static(path.resolve(__dirname, "client")));
 /*******************************************
- 
+ LOGIN
  ********************************************/
-var mysql = require("mysql");
-var express = require("express");
-var session = require("express-session");
-var bodyParser = require("body-parser");
-var path = require("path");
-
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -26,7 +23,6 @@ var connection = mysql.createConnection({
   database: "nodelogin"
 });
 
-var app = express();
 app.use(
   session({
     secret: "secret",
