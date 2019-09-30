@@ -43,7 +43,8 @@ app.post("/auth", function(request, response) {
       function(error, results, fields) {
         request.session.loggedin = true;
         request.session.username = username;
-        response.redirect("/chat");
+        response.redirect("/chat.html");
+        response.json({ msg: "instructions" });
         response.end();
       }
     );
@@ -56,6 +57,8 @@ app.post("/auth", function(request, response) {
 app.get("/chat", function(request, response) {
   if (request.session.loggedin) {
     response.send("Welcome back, " + request.session.username + "!");
+    // document.querySelector("#username").value = request.session.username;
+    response.render("/chat");
   } else {
     response.send("Please login to view this page!");
   }

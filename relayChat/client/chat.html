@@ -43,14 +43,6 @@
           socket.emit("identify", $scope.name);
         };
       }
-
-      function myFunction() {
-        let person = prompt("Please enter your name", "Your Name");
-        if (person != null) {
-          document.getElementById("demo").innerHTML =
-            "Hello " + person + "! How are you today?";
-        }
-      }
     </script>
   </head>
   <body>
@@ -97,10 +89,11 @@
               <div class="span2">
                 <input
                   type="text"
+                  id="username"
                   class="input-block-level"
                   ng-model="name"
                   ng-change="setName()"
-                  placeholder="Your name"
+                  placeholder="Your Name"
                 />
               </div>
               <div class="input-append span7">
